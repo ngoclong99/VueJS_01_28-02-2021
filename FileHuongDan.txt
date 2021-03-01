@@ -1,0 +1,86 @@
+
+Bố cục file :
+    - main.js : File gốc
+    - App.vue : Component Gốc  
+    - assets : Hình ảnh, font ,...
+    - components : Chứa các component
+
+
+Mỗi Component : 
+    - 3 thành phần : 
+        - Template -> HTML -> hiển thị ( Phải nằm trong 1 thẻ chung ( được gọi là root element ) )
+        - Script : JS -> xử lý 
+        - Style : CSS -> Làm đẹp
+            + Hỗ trợ : SCSS
+            + Scoped style : Style dành riêng cho component
+            <style> thì áp dụng toàn bộ component </style>
+            <style Scoped> Ap dụng riêng cho component có nó</style>
+
+Tạo component :
+    - Tạo file .vue
+    - import vào file App.vue (Component gốc)
+    - Khai báo  ( export default )
+
+* lifeCycle : Vòng đời component
+
+* 2 ways binding : Mô hình của vue js
+    - bind dl 2 chiều ( Giữa thành phần xử lý Template và  Script )
+        + data(){} -> luôn trả về 1 object  ( VD: Menu.vue.js) Nơi chứa các properly và method của đối tượng
+    - Việc binding 2 chiều phụ thuộc vào Kiểu DL của element
+* binding 1 chiều : 
+    - value binding : {{ tên thuộc tính or method }} -> lấy value của thuôc tính hoặc method
+    - v-bind
+    - style class: :class = "{[tên class]: tên thuộc tính theo Data}" Lưu ý: "{[tên class]: tên thuộc tính theo Data}" là 1 đối tượng
+
+* v-model=""
+    - Liên kết element với property (VD 1)
+
+* Event handling:
+    - v-on:tên sự kiện = "function()"  or v-on:tên sự kiện = "làm gì đó" 
+        - Viết tắt : v-on: ~~~ @
+
+* Xóa bỏ hành động mặc định : 
+    - Thay vì dùng event.preventDefault trong function.
+    - Ta có thể sử dụng : @sự kiện.prevent="function()"
+
+* ref : 
+    Ánh xạ element (Nghiên cứu sau)
+    VD: Trong js -> var a = document.getElementById("id");
+        Trong vue -> this.$refs. "giá trị trong ref"
+    -> Lấy ra được chính cái element đó
+
+* Conditional rendering:
+    - v-show : Ẩn hoặc hiện element theo đk 
+    - v-hide : ngược lại v-show (true -> ẩn , false -> hiện)
+    - v-if : Tương tự v-show 
+        + v-show thì chèn thêm style = display : none or ...
+        + v-if thì xóa cả element và khi mở thì tạo lại (có thể sợ trang vue về lệnh này -if ngoài ra -else,....)
+
+* List rendering:
+    - v-for: Vòng lặp 
+        <div v-for="(task,index) in tasks" :key="index">
+            {{task.name}}
+        </div>
+
+* Method:
+    - Function             // VD 5
+
+*watch:
+    - theo dõi sự thay đổi của data
+
+*Hooks: 
+    - mounted
+
+*Props: 
+    - Props cũng giống như Data
+    - Là DL đẩy từ Component cha -> con
+        - Gửi props -> :[Tên Props] = "DL cần gửi"
+        - Nhận props -> props:['Tên Props']
+    - VD chỉ 1 phần nhỏ -> Thông xin chi tiết sợ "Props vue JS"
+
+*Filter
+    - Là thành phần nằm giữa Lớp Giao diện (template) và Xử lý(Script) 
+    - Biến đổi DL trước khi render
+
+Khi chạy lệnh : npm run build ( đươc 1 file dist )
+Đây là file kết quả cuối cùng của dự án được tạo ra từ file hiện có
